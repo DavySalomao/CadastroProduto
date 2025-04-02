@@ -61,7 +61,7 @@ const{
       />
   )}
       />
-      {errors.nome && <Text>error.nome.message</Text>}
+      {errors.nome && <Text>{errors.nome.message}</Text>}
       
       <Text style={styles.label}>Descrição do produto:</Text>
       <Controller 
@@ -78,7 +78,7 @@ const{
   )}
       />
 
-      {errors.nome && <Text>error.descricao.message</Text>}
+      {errors.nome && <Text>{errors.descricao.message}</Text>}
       
 
       <Text style={styles.label}>Valor unitario:</Text>
@@ -96,7 +96,7 @@ const{
       />
   )}
       />
-       {errors.nome && <Text>error.valor.message</Text>}
+       {errors.nome && <Text>{errors.valor.message}</Text>}
 
 
       <Button title="Salvar" onPress={handleSubmit(enviar)}/>

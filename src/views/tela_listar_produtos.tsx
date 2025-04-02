@@ -34,9 +34,9 @@ const TelaListarProdutos: React.FC = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View>
-            <Text>{item.nome}</Text>
-            <Text>{item.descricao}</Text>
-            <Text>{item.valor}</Text>
+            <Text>Nome:{item.nome}</Text>
+            <Text>Descrição{item.descricao}</Text>
+            <Text>Valor:{item.valor}</Text>
           </View>
         )}
       />
