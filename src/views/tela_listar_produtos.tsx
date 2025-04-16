@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View, Text, StyleSheet } from "react-native";
 
 interface Produto {
   id: string;  // Alterado de String para string
@@ -27,21 +27,48 @@ const TelaListarProdutos: React.FC = () => {
   }, []); // Adicionei um array vazio para garantir que o efeito seja executado apenas uma vez
 
   return (
-    <View>
-      <Text>Lista de Produtos:</Text>
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Lista de Produtos:</Text>
       <FlatList 
         data={produtos}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View>
-            <Text>Nome:{item.nome}</Text>
+          <View style={styles.itemContainer}>
+            <Text style={styles.nome}>Nome:{item.nome}</Text>
             <Text>Descrição{item.descricao}</Text>
-            <Text>Valor:{item.valor}</Text>
+            <Text style={styles.valor}>Valor:{item.valor}</Text>
           </View>
         )}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#fff',
+  },
+  titulo: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  itemContainer: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  nome:{
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  valor: {
+    fontSize: 14,
+    color: 'green',
+  },
+
+});
 
 export default TelaListarProdutos;
