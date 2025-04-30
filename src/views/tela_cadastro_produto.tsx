@@ -2,7 +2,11 @@ import React from "react";
 import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
 import {useForm, Controller} from "react-hook-form"
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../App";
 // Utiliza o local storage para manipular os dados
+
+type prop_navegacao = StackNavigationProp<RootStackParamList, "Cadastro">
 
 //Como fosse uma MODEL
 interface Produto {
@@ -47,7 +51,7 @@ const{
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Nome de produto:</Text>
+      <Text style={styles.label}>Norme de produto:</Text>
       <Controller 
       control={control}
       name="nome"

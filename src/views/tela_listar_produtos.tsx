@@ -1,6 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useEffect, useState } from "react";
-import { FlatList, View, Text, StyleSheet } from "react-native";
+import { FlatList, View, Text, StyleSheet, Button } from "react-native";
+import { RootStackParamList } from "../../App";
+import { useNavigation } from "@react-navigation/native";
+
+type prop_navegacao = StackNavigationProp<RootStackParamList, "Listagem">
 
 interface Produto {
   id: string;  // Alterado de String para string
@@ -10,7 +15,12 @@ interface Produto {
 }
 
 const TelaListarProdutos: React.FC = () => {
+  const navegacao = useNavigation<prop_navegacao>();
   const [produtos, setProdutos] = useState<Produto[]>([]);
+
+  const cadastro = () => {
+    navegacao.navigate("Cadastro")
+  }
 
   useEffect(() => {
     const busca_produtos = async () => {
@@ -29,6 +39,7 @@ const TelaListarProdutos: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Lista de Produtos:</Text>
+      <Button title="Cadastrar Novo Produto" onPress={() => {cadastro()}} />
       <FlatList 
         data={produtos}
         keyExtractor={(item) => item.id}
